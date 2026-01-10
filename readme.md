@@ -5,9 +5,12 @@
 
 A Simple Customer Relationship Management (CRM) system built with PHP.
 
-## Features
+## Features Detail
 
-- **Auth** - Admin Login and Logout
+- **Authentication**
+    - Login
+    - Logout
+
 - **Customer Management** 
    - Add New Customer 
    - Update Custmer
@@ -61,25 +64,6 @@ A Simple Customer Relationship Management (CRM) system built with PHP.
 5. **Access the application**
     - Open your browser and go to `http://localhost:8000`
 
-    ## Features Detail
-
-    ### Authentication
-    - Login
-    - Logout
-
-    ### Customer Management
-    - Create customer
-    - Update customer
-    - Delete customer
-    - Search customers
-    - List all customers
-
-    ### Ticket Management
-    - Add new ticket and assign to customer
-    - Update ticket
-    - Delete ticket
-    - Get ticket details
-    - List all tickets
 
     ## Project Structure
 
