@@ -1,0 +1,166 @@
+/* ===== HEADER ===== */
+.crm-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.crm-header h1 {
+    font-size: 22px;
+}
+
+.crm-header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.crm-header nav a:hover {
+    opacity: 0.85;
+}
+
+/* Logout form */
+.logout-form {
+    all: unset;       
+    display: inline;
+}
+
+/* Logout button styled as link */
+.crm-header nav .logout-form button {
+    background: none;
+    border: none;
+    color: #fff; /* <-- black text */
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none; /* like links */
+    font-size: 14px;
+    padding: 0;
+    transition: opacity 0.2s;
+}
+
+.crm-header nav .logout-form button:hover {
+    opacity: 0.85;
+}
+
+.ticket-card {
+    background: #fff;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.ticket-card h2.ticket-title {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #111827;
+    text-align: center;
+}
+
+.ticket-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.ticket-label {
+    font-weight: 600;
+    color: #374151;
+}
+
+.ticket-value {
+    font-weight: 500;
+    color: #111827;
+}
+
+/* Description special */
+.ticket-description {
+    flex-direction: column;
+}
+
+.ticket-description .ticket-value {
+    margin-top: 6px;
+    line-height: 1.5;
+    color: #4b5563;
+}
+
+/* Status / Priority badges */
+.status-badge,
+.priority-badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+/* Status colors */
+.status-open { background: #dbeafe; color: #1e40af; }
+.status-in_progress { background: #fef3c7; color: #92400e; }
+.status-closed { background: #dcfce7; color: #166534; }
+
+/* Priority colors */
+.priority-low { background: #e0f2fe; color: #0369a1; }
+.priority-medium { background: #ede9fe; color: #5b21b6; }
+.priority-high { background: #fee2e2; color: #991b1b; }
+
+/* Ticket actions */
+.ticket-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+/* Buttons */
+.ticket-actions .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.ticket-actions .btn.edit {
+    background: #2563eb;
+    color: #fff;
+}
+
+.ticket-actions .btn.edit:hover {
+    background: #1d4ed8;
+}
+
+.ticket-actions .btn.delete {
+    background: #dc2626;
+    color: #fff;
+    border: none;
+}
+
+.ticket-actions .btn.delete:hover {
+    background: #b91c1c;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .ticket-card {
+        padding: 20px;
+        margin: 30px 15px;
+    }
+
+    .ticket-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .ticket-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

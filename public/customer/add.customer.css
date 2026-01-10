@@ -1,0 +1,163 @@
+/* ===== General Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* ===== Header ===== */
+.crm-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.crm-header h1 {
+    font-size: 24px;
+}
+
+.crm-header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.crm-header nav a:hover {
+    opacity: 0.8;
+}
+
+/* Logout form */
+.logout-form {
+    all: unset;       
+    display: inline;
+}
+
+/* Logout button styled as link */
+.crm-header nav .logout-form button {
+    background: none;
+    border: none;
+    color: #fff; /* <-- black text */
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none; /* like links */
+    font-size: 14px;
+    padding: 0;
+    transition: opacity 0.2s;
+}
+
+.crm-header nav .logout-form button:hover {
+    opacity: 0.85;
+}
+
+/* ===== Main Content ===== */
+.crm-main {
+    padding: 30px;
+    background-color: #f4f4f4;
+    min-height: calc(100vh - 80px);
+}
+
+/* ===== Customer Form ===== */
+.customer-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.customer-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.customer-form input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.customer-form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.customer-form .btn-add {
+    width: 100%;
+    background-color: #28a745;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.customer-form .btn-add:hover {
+    opacity: 0.8;
+}
+
+.customer-form .btn-delete {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+.customer-form .btn-delete:hover {
+    opacity: 0.8;
+}
+
+/* ===== Error & Success Messages ===== */
+.error {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.success {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* ===== Responsive ===== */
+@media(max-width: 500px) {
+    .customer-form {
+        padding: 20px;
+    }
+
+    .crm-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .crm-header nav {
+        margin-top: 10px;
+    }
+}

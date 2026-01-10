@@ -1,0 +1,157 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+/* Page background */
+body {
+    background: #f4f6f9;
+    min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+.crm-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.crm-header h1 {
+    font-size: 22px;
+}
+
+.crm-header nav {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* spacing between links and logout */
+}
+
+/* Links in nav */
+.crm-header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.crm-header nav a:hover {
+    opacity: 0.85;
+}
+
+/* Logout form */
+.logout-form {
+    all: unset;       
+    display: inline;
+}
+
+/* Logout button styled as link */
+.crm-header nav .logout-form button {
+    background: none;
+    border: none;
+    color: #fff; /* <-- black text */
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none; /* like links */
+    font-size: 14px;
+    padding: 0;
+    transition: opacity 0.2s;
+}
+
+.crm-header nav .logout-form button:hover {
+    opacity: 0.85;
+}
+
+
+
+/* ===== MAIN CONTENT ===== */
+form {
+    background: #ffffff;
+    width: 100%;
+    max-width: 520px;
+    margin: 60px auto; /* center horizontally */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Inputs */
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Focus effect */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* Textarea */
+textarea {
+    resize: vertical;
+}
+
+/* Button */
+button {
+    width: 100%;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    form {
+        margin: 30px 15px;
+        padding: 20px;
+    }
+
+     .crm-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .crm-header nav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
