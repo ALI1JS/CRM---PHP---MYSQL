@@ -35,7 +35,7 @@ A Simple Customer Relationship Management (CRM) system built with PHP.
 ## Installation & Setup
 
 ### Requirements
-- PHP 7.4 or higher
+- PHP 8 or higher
 - MySQL 5.7 or higher
 - Apache web server
 

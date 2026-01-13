@@ -43,9 +43,9 @@ $customerId = (int) $_GET['id'];
 
         <label>Priority</label>
         <select name="priority">
-            <option value="low">Low</option>
-            <option value="medium" selected>Medium</option>
-            <option value="high">High</option>
+            <option value="LOW">Low</option>
+            <option value="MEDIUM" selected>Medium</option>
+            <option value="HIGH">High</option>
         </select>
 
         <button type="submit">Create Ticket</button>

@@ -11,7 +11,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
     $customer = new Customer();
-    $addCustomer = $customer->add($email, $name, $phone);
+
+    // Argument Named PHP 8.0 Version
+    $addCustomer = $customer?->add( // Nullsafe Operator (?->)
+        email: $email,
+        name: $name,
+        phone: $phone
+    );
 
     if ($addCustomer === 200) {
         $_SESSION['success'] = "Customer Added Successfully";

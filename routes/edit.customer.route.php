@@ -12,11 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
     $customer = new Customer();
-    $addCustomer = $customer->update((int) $id, [
-        "email" => $email,
-        "name" => $name,
-        "phone" => $phone
-    ]);
+    
+    // Argument Named PHP 8.0 Version
+    $addCustomer = $customer->update(
+        id: (int) $id,
+        data: [
+            "email" => $email,
+            "name" => $name,
+            "phone" => $phone
+        ]
+    );
 
     if ($addCustomer === 200) {
         $_SESSION['success'] = "Customer Updated Successfully";

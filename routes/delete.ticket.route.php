@@ -9,7 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
     $ticket = new Ticket();
-    $deletedTicket = $ticket->delete((int) $id);
+
+    // Argument Named PHP 8.0 Version
+    $deletedTicket = $ticket->delete(id: (int) $id);
 
     if ($deletedTicket === 200) {
         $_SESSION['success'] = "Ticket Deleted Successfully";

@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . "/../db.php";
+require_once __DIR__ . "/../enums/priority.ticket.php";
 
-class Ticket
+
+readonly class Ticket  // readonly class 
 {
 
     private PDO $conn;
@@ -13,7 +15,7 @@ class Ticket
         $this->conn = $db->conn();
     }
 
-    public function getAll()
+    public function getAll(): array
     {
 
         $stmt = $this->conn->prepare("SELECT * FROM tickets");
@@ -23,7 +25,7 @@ class Ticket
         return $result;
     }
 
-     public function getOne(int $id)
+    public function getOne(int | string $id) // Union Types
     {
 
         $stmt = $this->conn->prepare("SELECT * FROM tickets WHERE id= ?");
@@ -33,13 +35,14 @@ class Ticket
         return $result ?? null;
     }
 
-    public function add(
+    public function add( // Union Types
         string $title,
         string $description,
-        string $priority,
-        int $customerId,
-        int $adminId
-    ) {
+        Priority $priority,
+        int|string $customerId,
+        int|string $adminId
+    ): int {
+        
         $sql = "
         INSERT INTO tickets 
         (title, description, priority, customer_id, assigned_to)
@@ -51,7 +54,7 @@ class Ticket
         $stmt->execute([
             $title,
             $description,
-            $priority,
+            $priority->name,
             $customerId,
             $adminId
         ]);
@@ -60,7 +63,7 @@ class Ticket
     }
 
 
-    public function delete(int $id)
+    public function delete(int|string $id): int|string // Union Types
     {
         $stmt = $this->conn->prepare("DELETE FROM tickets WHERE id= ?");
         $deletd = $stmt->execute([$id]);
@@ -68,10 +71,10 @@ class Ticket
         if ($deletd)
             return 200;
         else
-            return 400;
+            return "Delete Error";
     }
 
-    public function update(int $id, array $data)
+    public function update(int|string $id, array $data): int|string // Union Types
     {
         $fields = [];
         $values = [];
@@ -100,16 +103,18 @@ class Ticket
             return 400;
         }
 
-        $sql = "UPDATE tickets SET " . implode(", ", $fields) . " WHERE id = ?";
+        $sql = "UPDATE tickets SET " . implode(separator: ", ", array: $fields) . " WHERE id = ?";
         $values[] = $id;
 
-        $stmt = $this->conn->prepare($sql);
-        $updated = $stmt->execute($values);
+        $finalVlaue = [...$values, $id]; // Unpacking Array;
+
+        $stmt = $this?->conn?->prepare(query: $sql); // Nullsafe Operator (?->)
+        $updated = $stmt?->execute(params: $finalVlaue); // Nullsafe Operator (?->)
 
         if ($updated) {
             return 200;
         } else {
-            return 400;
+            return "update Failed";
         }
     }
 

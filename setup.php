@@ -56,7 +56,7 @@ try {
             title VARCHAR(255),
             description TEXT,
             status ENUM('open','in_progress','closed') DEFAULT 'open',
-            priority ENUM('low','medium','high') DEFAULT 'medium',
+            priority ENUM('LOW','MEDIUM','HIGH') DEFAULT 'MEDIUM',
             assigned_to INT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE,

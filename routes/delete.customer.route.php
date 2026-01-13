@@ -9,7 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
     $customer = new Customer();
-    $addCustomer = $customer->delete((int) $id);
+
+    // Argument Named PHP 8.0 Version
+    $addCustomer = $customer->delete(id: (int) $id);
 
     if ($addCustomer === 200) {
         $_SESSION['success'] = "Customer Deleted Successfully";

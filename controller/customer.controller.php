@@ -1,10 +1,12 @@
 <?php
 require_once __DIR__ . "/../db.php";
 
+#[Route("Customer")]
 class Customer
 {
 
-    private PDO $conn;
+    #[\Required] // Attributes (Annotations Replacement)
+    private readonly PDO $conn; // readonly ==> assinged only once
 
 
     public function __construct()
@@ -13,7 +15,7 @@ class Customer
         $this->conn = $db->conn();
     }
 
-    public function getAll()
+    public function getAll(): array
     {
 
         $stmt = $this->conn->prepare("SELECT * FROM customers");
@@ -23,7 +25,7 @@ class Customer
         return $result;
     }
 
-    public function add(string $email, string $name, string $phone)
+    public function add(string $email, string $name, string $phone): int
     {
 
         $stmt = $this->conn->prepare("INSERT INTO customers (name, email,phone) VALUES(?,?,?)");
@@ -35,7 +37,7 @@ class Customer
 
     }
 
-    public function delete(int $id)
+    public function delete(int|string $id): int|string // Union Types
     {
         $stmt = $this->conn->prepare("DELETE FROM customers WHERE id= ?");
         $deletd = $stmt->execute([$id]);
@@ -43,10 +45,10 @@ class Customer
         if ($deletd)
             return 200;
         else
-            return 400;
+            return "Deleted Error";
     }
 
-    public function update(int $id, array $data)
+    public function update(int|string $id, array $data): int|string // Union Types
     {
         $fields = [];
         $values = [];
@@ -73,13 +75,15 @@ class Customer
         $sql = "UPDATE customers SET " . implode(", ", $fields) . " WHERE id = ?";
         $values[] = $id;
 
-        $stmt = $this->conn->prepare($sql);
-        $updated = $stmt->execute($values);
+        $finalValue = [...$values, $id]; // Unpacking Array
+
+        $stmt = $this->conn->prepare(query: $sql);
+        $updated = $stmt->execute(params: $finalValue);
 
         if ($updated) {
             return 200;
         } else {
-            return 400;
+            return "Update Error";
         }
     }
 

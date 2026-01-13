@@ -2,10 +2,11 @@
 session_start();
 require_once "../db.php";
 
+#[Route("Auth")]
 class Auth
 {
 
-    private PDO $conn;
+    private readonly PDO $conn; // readonly ==> assinged only once
 
     public function __construct()
     {
@@ -13,7 +14,7 @@ class Auth
         $this->conn = $db->conn();
     }
 
-    public function login(string $email, string $password)
+    public function login(string $email, string $password):never // never return type
     {
 
         $error = null;
@@ -36,15 +37,13 @@ class Auth
             $_SESSION['email'] = $user['email'];
 
             header("Location: /crm/public/customer/customer.php");
-            exit;
         }
 
         if ($error) {
             $_SESSION["error"] = $error;
             header("Location: /crm/public/auth/login.php");
-            exit;
-
         }
+        exit;
     }
 
     public function validate(string $email, string $password)
@@ -61,7 +60,7 @@ class Auth
     }
 
 
-    public function logout () {
+    public function logout (): never  { // never ==> return type
 
        session_unset();
        session_destroy();

@@ -1,16 +1,17 @@
 <?php
 
+
 class Db
 {
 
-    private PDO $conn;
-    private $host = "mysql";
-    private $username = "root";
-    private $password = "password";
-    private $database = "crm";
+    private readonly PDO $conn; // readonly ==> assinged only once
 
-    public function __construct()
-    {
+    public function __construct( // Constructor Property Promotion
+        private $host = "mysql",
+        private $username = "root",
+        private $password = "password",
+        private $database = "crm"
+    ) {
         try {
 
             $this->conn = new PDO(
@@ -27,7 +28,7 @@ class Db
             die("Connection Failed: " . $e->getMessage());
         }
     }
-    public function conn()
+    public function conn(): PDO
     {
         return $this->conn;
     }
